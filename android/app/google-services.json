@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "746343868966",
+    "project_id": "mynotes-flutter-dazenk",
+    "storage_bucket": "mynotes-flutter-dazenk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746343868966:android:6c624be3acbff5b9f114e7",
+        "android_client_info": {
+          "package_name": "com.dazenk.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVuJitU6U_sxKGJehUOkXE1JWadZObqFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
