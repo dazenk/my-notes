@@ -46,6 +46,7 @@ class HomePage extends StatelessWidget {
                 print('You are a verified user');
               } else {
                 print('You need to verify your email first');
+                print('Un cambio para github');
               }
               return const Text('Done');
             default:
