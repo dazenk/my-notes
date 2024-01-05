@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mynotes/firebase_options.dart';
+import 'dart:developer' as devtools show log;
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -41,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
             enableSuggestions: false,
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter your email here'
             ),
           ),
@@ -50,7 +49,7 @@ class _LoginViewState extends State<LoginView> {
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter your password here'
             ),
           ),
@@ -60,15 +59,21 @@ class _LoginViewState extends State<LoginView> {
               final password = _password.text;
               try {
                 final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                email: email,
-                password: password
-              );
-              
-              print(userCredential);
+                  email: email,
+                  password: password
+                );
+                
+                devtools.log(userCredential.toString());
+                if (mounted) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/notes/',
+                    (route) => false
+                  );
+                }
               } on FirebaseAuthException catch (e) {
-                print(e.code);
+                devtools.log(e.code);
                 if (e.code == 'invalid-credential') {
-                  print('User not found or invalid credentials');
+                  devtools.log('User not found or invalid credentials');
                 }
               }                     
             },
